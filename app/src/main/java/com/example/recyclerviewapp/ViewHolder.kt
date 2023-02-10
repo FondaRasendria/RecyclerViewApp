@@ -1,10 +1,14 @@
 package com.example.recyclerviewapp
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 class ViewHolder(inflater: LayoutInflater, parent: ViewGroup):
     RecyclerView.ViewHolder(inflater.inflate(R.layout.recycler_view_template, parent, false)) {
@@ -20,7 +24,7 @@ class ViewHolder(inflater: LayoutInflater, parent: ViewGroup):
     }
 
     fun bind(data: Hero){
-        imgView?.setImageResource(data.photo!!)
+        Glide.with(imgView!!.context).load(data.photo).into(imgView!!)
         txtName?.setText(data.name)
         txtFrom?.setText(data.from)
     }
